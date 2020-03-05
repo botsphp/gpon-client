@@ -195,3 +195,17 @@ func (c *GponClient) DeletePortMapping(name string) {
 		log.Fatalf("cannot delete port mapping: %v\n", ret.RetVal)
 	}
 }
+
+func (c *GponClient) Reboot() {
+	var url = fmt.Sprintf("http://%s/cgi-bin/luci/admin/reboot", c.ip)
+	var data map[string]interface{}
+	resp := c.mustPostForm(url, data)
+	defer resp.Body.Close()
+
+	html, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		log.Fatalf("cannot get token: %v", err)
+	}
+
+	fmt.Println(html)
+}

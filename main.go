@@ -20,6 +20,9 @@ func main() {
 	switch cmd := os.Args[1]; cmd {
 	default:
 		log.Fatalf("unknown command: %s\n", cmd)
+	case "reboot":
+		fmt.Println("restart in 10s...")
+		client.Reboot()
 	case "portmaps":
 		subcmd := os.Args[2]
 		a := os.Args[3:]
@@ -61,6 +64,7 @@ func usage(name string) {
 Usage: %[1]s command [sub-command] [<arguments>...]
 
 All Available Command List:
+	reboot now
 
 	portmaps list
 	portmaps create  <name> <protocol> <outer-port> <inner-ip> <inner-port>
