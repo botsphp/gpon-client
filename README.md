@@ -11,6 +11,7 @@ A GPON (Tiānyì Gateway) client used to modify router configurations.
 Usage: ./gpon-client command [sub-command] [<arguments>...]
 
 All Available Command List:
+        reboot
 
         portmaps list
         portmaps create  <name> <protocol> <outer-port> <inner-ip> <inner-port>
@@ -36,6 +37,14 @@ $ export PASSWORD=
 ```
 
 ## 示例使用
+
+### 重启
+
+#### 立即重启
+
+```bash
+$ PASSWORD=XXOO ./gpon-client reboot
+```
 
 ### 端口转发配置
 
